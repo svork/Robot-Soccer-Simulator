@@ -4,7 +4,7 @@ import java.util.*;
 public class CustomEmptyTeam implements Team{
 	
 	public String getTeamName(){
-		return "Dumb team";
+		return "AMZN";
 	}
 
 	public void setTeamSide(TeamSide side){
@@ -48,6 +48,20 @@ public class CustomEmptyTeam implements Team{
 				code for your robot. It is called everytime it returns,
 				unlimited times.
 			*/
+      // Primeiro teste com os Robôs da AMZN
+      // Simples movimentos, seguindo o tutorial no Youtube
+      setSpeed(1.0f, 0);
+      delay(1000);
+      stopMotors();
+      setSpeed(0,-1.0f);
+      delay(1000);
+      stopMotors();
+      setSpeed(-1.0f, 0);
+      delay(1000);
+      stopMotors();
+      setSpeed(0,1.0f);
+      delay(1000);
+      stopMotors();
 		}
 
 		/*

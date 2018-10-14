@@ -5,11 +5,11 @@ float SCALE = 300f;
 void settings(){
   controller = new GameController(new Match(
     // Team A Class
-    CustomTeamA.class,
+    CustomEmptyTeam.class,
     // Team B Class
     CustomTeamB.class,
     // Number of robots on each side
-    2
+    1
   ));
 
   controller.getSimulator().setFieldSize(2.44f, 1.82f);
