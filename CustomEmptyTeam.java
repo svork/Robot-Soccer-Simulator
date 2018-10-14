@@ -8,8 +8,11 @@ public class CustomEmptyTeam implements Team{
 		return "AMZN";
 	}
 
-	public void setTeamSide(TeamSide side){
+  // Lado do Campo
+  TeamSide lado_campo;
 
+	public void setTeamSide(TeamSide side){
+    lado_campo = side;
 	}
 
 	public Robot buildRobot(GameSimulator s, int index){
@@ -38,6 +41,12 @@ public class CustomEmptyTeam implements Team{
     
     // Criando um Sensor de distância
     Sensor frente, direita, atras, esquerda;
+    
+    // Criando um Sensor de Bússola
+    Sensor sensor_bussola;
+    
+    // Lado do Gol
+    float lado_gol;
 		public void setup(){
 			/*
 				You should use this method to initialize your code,
@@ -53,6 +62,17 @@ public class CustomEmptyTeam implements Team{
       direita = getSensor("ULTRASONIC_RIGHT");
       atras = getSensor("ULTRASONIC_BACK");
       esquerda = getSensor("ULTRASONIC_LEFT");
+      
+      // Ler sensor de bússola
+      sensor_bussola = getSensor("COMPASS");
+      
+      // Definir lado do campo
+      if (lado_campo == TeamSide.RIGHT){
+         lado_gol = 180f; 
+      }
+      else {
+         lado_gol = 0f; 
+      }
 		}
 
 		public void loop(){
@@ -61,6 +81,12 @@ public class CustomEmptyTeam implements Team{
 				code for your robot. It is called everytime it returns,
 				unlimited times.
 			*/
+      // =================== Sensor Bússola =====================
+      // Ler direção do gola
+      float direcao_gol = sensor_bussola.readValue(0);
+      System.out.println(direcao_gol);
+      // ==========================================================
+      
       // =================== Movimentos ===========================
       // Primeiro teste com os Robôs da AMZN
       // Simples movimentos, seguindo o tutorial no Youtube
@@ -83,9 +109,9 @@ public class CustomEmptyTeam implements Team{
       // Andar para direita
       setSpeed(0,1.0f);
       delay(1000);
-      stopMotors(); */
+      stopMotors(); 
       // ============================================================
-      
+      */
       // =================== Sensor Bola ============================
       // Ler ângulo da bola
       float angulo_bola = sensor_bola.readValue(0);
@@ -94,25 +120,23 @@ public class CustomEmptyTeam implements Team{
       float distancia_bola = sensor_bola.readValue(1);
       
       // Virar o Robô na direção da Bola
-      setRotation(angulo_bola * 2.0f);
+      setRotation(angulo_bola * 1.0f);
       
-      // Executar movimento por 100ms
-      delay(100);
+      // Executar movimento por 1s
+      delay(1000);
       
       // Se o Robô estiver na frente da Bola, parar
       if (distancia_bola < 0.2f && angulo_bola < 10 && angulo_bola > -10) {
          stopMotors();
-         delay(500);
+         delay(1000);
       }
       else {
-         setSpeed(2.0f);
+         setSpeed(1.0f);
          delay(1000);
-         stopMotors();
       }
       
       // Para os motores do Robô
-      stopMotors();
-      
+      stopMotors();      
       // ============================================================
       
       // =================== Sensor Distância =======================
@@ -121,7 +145,7 @@ public class CustomEmptyTeam implements Team{
       float distancia_direita = direita.readValue(0);
       float distancia_atras = atras.readValue(0);
       float distancia_esquerda = esquerda.readValue(0);
-      
+      /*
       // Não sair do campo(Área branca)
       if (distancia_direita < 0.1f) {
          stopMotors();
@@ -143,7 +167,7 @@ public class CustomEmptyTeam implements Team{
       else {
          setSpeed(0, -2.0f);
          delay(500);
-      } 
+      } */
       // ============================================================
 		}
 
