@@ -123,16 +123,14 @@ public class CustomEmptyTeam implements Team{
       setRotation(angulo_bola * 1.0f);
       
       // Executar movimento por 1s
-      delay(1000);
+      //delay(1000);
       
       // Se o Robô estiver na frente da Bola, parar
       if (distancia_bola < 0.2f && angulo_bola < 10 && angulo_bola > -10) {
          stopMotors();
-         delay(1000);
       }
       else {
          setSpeed(1.0f);
-         delay(1000);
       }
       
       // Para os motores do Robô
