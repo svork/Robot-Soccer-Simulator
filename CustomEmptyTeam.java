@@ -123,7 +123,7 @@ public class CustomEmptyTeam implements Team{
       setRotation(angulo_bola * 1.0f);
       
       // Executar movimento por 1s
-      //delay(1000);
+      delay(500);
       
       // Se o Robô estiver na frente da Bola, parar
       if (distancia_bola < 0.2f && angulo_bola < 10 && angulo_bola > -10) {
@@ -131,6 +131,7 @@ public class CustomEmptyTeam implements Team{
       }
       else {
          setSpeed(1.0f);
+         delay(500);
       }
       
       // Para os motores do Robô
@@ -143,7 +144,7 @@ public class CustomEmptyTeam implements Team{
       float distancia_direita = direita.readValue(0);
       float distancia_atras = atras.readValue(0);
       float distancia_esquerda = esquerda.readValue(0);
-      /*
+      
       // Não sair do campo(Área branca)
       if (distancia_direita < 0.1f) {
          stopMotors();
@@ -165,7 +166,7 @@ public class CustomEmptyTeam implements Team{
       else {
          setSpeed(0, -2.0f);
          delay(500);
-      } */
+      }
       // ============================================================
 		}
 
